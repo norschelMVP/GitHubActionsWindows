@@ -7,6 +7,13 @@ on:
     branches: [ main ]
 
 jobs:
+  deploy:
+    runs-on: windows-latest
+    needs: [test]
+    
+    steps:
+      - run: echo "deployment"
+  
   test:
     strategy:
       matrix: 
