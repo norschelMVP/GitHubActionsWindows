@@ -8,7 +8,11 @@ on:
 
 jobs:
   test:
-    runs-on: windows-latest
+    strategy:
+      matrix: 
+        os: [windows-latest, ubuntu-latest, mac-latest]
+    runs-on: ${{ matrix.os }}
+    needs: [build]
     env:
       myVariable: "Basta 2021"
     steps:
