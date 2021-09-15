@@ -3,7 +3,6 @@ name: .NET
 env:
  majorVersion: 2
  minorVersion: 0
- buildVersion: 0
 
 on:
   push:
@@ -45,12 +44,25 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore ${{ env.solutionpath }}
       
-    - name: Modify version number
+    - name: AssemblyVersion+AssemblyFileVersion - Modify version number
       uses: mingjun97/file-regex-replace@v1
       env:
-           version-number: ${{ env.majorVersion }}.${{ env.minorVersion }}.${{ env.buildVersion }}.${{ github.run_number }}
+           version-number: ${{ env.majorVersion }}.${{ env.minorVersion }}.${{ github.run_number }}.0
       with:
-        regex: '"[0-9]+(\.([0-9]+|\*)){1,3}"'
+        regex: '[0-9]+(\.([0-9]+|\*)){1,3}'
+        replacement: '${{ env.version-number}}'
+        flags: "g"                  # Optional, defaults to "g"
+        include: 'AssemblyInfo.*'    # Optional, defaults to ".*"
+        exclude: '.^'               # Optional, defaults to '.^'
+        encoding: 'utf8'            # Optional, defaults to 'utf8'
+        path: '.'                   # Optional, defaults to '.'
+      
+    - name: AssemblyVersion+AssemblyFileVersion - Modify version number
+      uses: mingjun97/file-regex-replace@v1
+      env:
+           version-number: ${{ env.majorVersion }}.${{ env.minorVersion }}.${{ github.run_number }}
+      with:
+        regex: '[0-9]+(\.([0-9]+|\*)){1,2}'
         replacement: '${{ env.version-number}}'
         flags: "g"                  # Optional, defaults to "g"
         include: 'AssemblyInfo.*'    # Optional, defaults to ".*"
