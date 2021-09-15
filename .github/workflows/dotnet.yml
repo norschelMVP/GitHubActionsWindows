@@ -36,9 +36,17 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
+        dotnet-version: 5.0.x 
     - name: Restore dependencies
       run: dotnet restore ${{ env.solutionpath }}
+    - name: set-version-assemblyinfo
+      # You may pin to the exact commit or the version.
+      # uses: dannevesdantas/set-version-assemblyinfo@c7d09f193e84e1546d95b07afd3d0a6544978341
+      uses: dannevesdantas/set-version-assemblyinfo@v.1.0.0
+      with:
+        # Folder location to search for AssemblyInfo.cs/.vb files
+        # Version number to set on [AssemblyVersion] and [AssemblyFileVersion] attributes of AssemblyInfo.cs/.vb files
+        version: 2.1.0.1
       
     - name: Build
       run: dotnet build  ${{ env.solutionpath }} --no-restore
