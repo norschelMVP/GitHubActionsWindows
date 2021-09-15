@@ -52,7 +52,7 @@ jobs:
       with:
         # Folder location to search for AssemblyInfo.cs/.vb files
         # Version number to set on [AssemblyVersion] and [AssemblyFileVersion] attributes of AssemblyInfo.cs/.vb files
-        version: ${{ version-number }}
+        version: ${{ env.version-number }}
       
     - name: Build
       run: dotnet build  ${{ env.solutionpath }} --no-restore
