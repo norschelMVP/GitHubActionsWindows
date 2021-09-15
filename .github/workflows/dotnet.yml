@@ -59,3 +59,10 @@ jobs:
       run: dotnet build  ${{ env.solutionpath }} --no-restore
     - name: Test
       run: dotnet test ${{ env.solutionpath }} --no-build --verbosity normal
+    - name: Upload dotnet results
+      uses: actions/upload-artifact@v2
+      with:
+        name: dotnet
+        path: '.\WinNetCoreApp\WinNetCoreApp\bin\Debug'
+      # Use always() to always run this step to publish test results when there are test failures
+      #if: ${{ always() }}
