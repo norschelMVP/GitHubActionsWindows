@@ -51,7 +51,7 @@ jobs:
       with:
         regex: '[0-9]+(\.([0-9]+|\*)){1,3}'
         replacement: '${{ env.version-number}}'
-        flags: "g"                  # Optional, defaults to "g"
+        flags: "gi"                  # Optional, defaults to "g"
         include: 'AssemblyInfo.*'    # Optional, defaults to ".*"
         exclude: '.^'               # Optional, defaults to '.^'
         encoding: 'utf8'            # Optional, defaults to 'utf8'
@@ -64,7 +64,7 @@ jobs:
       with:
         regex: '[0-9]+(\.([0-9]+|\*)){1,2}'
         replacement: '${{ env.version-number}}'
-        flags: "g"                  # Optional, defaults to "g"
+        flags: "gi"                  # Optional, defaults to "g"
         include: 'AssemblyInfo.*'    # Optional, defaults to ".*"
         exclude: '.^'               # Optional, defaults to '.^'
         encoding: 'utf8'            # Optional, defaults to 'utf8'
