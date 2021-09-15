@@ -4,8 +4,6 @@ env:
  majorVersion: 2
  minorVersion: 0
  buildVersion: 0
- version-number: '${{ env.majorVersion}}.${{ env.minorVersion}}.${{ env.buildVersion}}.${{ github.run_number }}'
- 
 
 on:
   push:
@@ -33,10 +31,11 @@ jobs:
       - run: echo "hello world ${{ env.myVariable }}"
   
   build:
+    env:
+      version-number: '${{ env.majorVersion}}.${{ env.minorVersion}}.${{ env.buildVersion}}.${{ github.run_number }}'
+      solutionpath: .\WinNetCoreApp\
 
     runs-on: windows-latest
-    env:
-      solutionpath: .\WinNetCoreApp\
 
     steps:
     - uses: actions/checkout@v2
