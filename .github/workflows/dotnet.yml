@@ -1,4 +1,10 @@
-name: .NET
+name: $ {{ env.majorVersion}}.$ {{ env.minorVersion}}.$ {{ env.buildVersion}}
+
+env:
+ majorVersion: 2
+ miniorVersion: 0
+ buildVersion: 0
+ 
 
 on:
   push:
