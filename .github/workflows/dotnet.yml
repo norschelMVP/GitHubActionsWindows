@@ -4,7 +4,7 @@ env:
  majorVersion: 2
  miniorVersion: 0
  buildVersion: 0
- version-number: ${{ env.majorVersion}}.${{ env.minorVersion}}.${{ env.buildVersion}}.${{ github.run_number }}
+ version-number: '${{ env.majorVersion}}.${{ env.minorVersion}}.${{ env.buildVersion}}.${{ github.run_number }}'
  
 
 on:
