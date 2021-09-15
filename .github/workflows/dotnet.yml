@@ -32,7 +32,7 @@ jobs:
   
   build:
     env:
-      version-number: '${{ env.majorVersion }}.${{ env.minorVersion }}.${{ env.buildVersion }}.${{ github.run_number }}'
+      version-number: ${{ env.majorVersion }}.${{ env.minorVersion }}.${{ env.buildVersion }}.${{ github.run_number }}
       solutionpath: .\WinNetCoreApp\
 
     runs-on: windows-latest
