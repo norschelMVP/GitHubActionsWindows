@@ -1,9 +1,10 @@
-name: $ {{ env.majorVersion}}.$ {{ env.minorVersion}}.$ {{ env.buildVersion}}
+name: .NET
 
 env:
  majorVersion: 2
  miniorVersion: 0
  buildVersion: 0
+ version-number: ${{ env.majorVersion}}.${{ env.minorVersion}}.${{ env.buildVersion}}.${{ github.run_number }}
  
 
 on:
@@ -52,7 +53,7 @@ jobs:
       with:
         # Folder location to search for AssemblyInfo.cs/.vb files
         # Version number to set on [AssemblyVersion] and [AssemblyFileVersion] attributes of AssemblyInfo.cs/.vb files
-        version: 2.1.0.1
+        version: ${{ version-number }}
       
     - name: Build
       run: dotnet build  ${{ env.solutionpath }} --no-restore
