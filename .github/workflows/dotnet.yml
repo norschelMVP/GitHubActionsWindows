@@ -10,13 +10,13 @@ jobs:
   test:
     strategy:
       matrix: 
-        os: [windows-latest, ubuntu-latest, mac-latest]
+        os: [windows-latest, ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     needs: [build]
     env:
       myVariable: "Basta 2021"
     steps:
-      - run: write-host "hello world ${{ env.myVariable }}"
+      - run: echo "hello world ${{ env.myVariable }}"
   
   build:
 
