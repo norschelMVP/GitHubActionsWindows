@@ -7,6 +7,13 @@ on:
     branches: [ main ]
 
 jobs:
+  test:
+    runs-on: windows-latest
+    env:
+      myVariable: "Basta 2021"
+    steps:
+      - run: write-host "hello world ${{ env.myVariable }}"
+  
   build:
 
     runs-on: windows-latest
