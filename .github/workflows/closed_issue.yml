@@ -21,3 +21,5 @@ jobs:
        uses: peter-evans/create-or-update-comment@v1
        with:
           reactions: heart, hooray, laugh
+          issue-number: ${{ github.event.issues.number }}
+          
