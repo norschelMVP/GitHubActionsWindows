@@ -22,4 +22,5 @@ jobs:
        with:
           reactions: heart, hooray, laugh
           issue-number: ${{ github.event.issue.number }}
+          body: 'Great job.'
           
