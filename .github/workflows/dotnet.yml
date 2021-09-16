@@ -48,7 +48,7 @@ jobs:
     - name: AssemblyVersion+AssemblyFileVersion - Modify version number
       uses: mingjun97/file-regex-replace@v1
       env:
-           version-number: ${{ env.majorVersion }}.${{ env.minorVersion }}.${{ github.run_number }}
+           version-number: ${{ env.majorVersion }}.${{ env.minorVersion }}.${{ github.run_number }}.0
       with:
         regex: '[0-9]+(\.([0-9]+|\*)){1,3}'
         replacement: '${{ env.version-number}}'
