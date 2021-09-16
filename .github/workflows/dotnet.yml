@@ -79,8 +79,8 @@ jobs:
       with:
         name: dotnet
         path: '.\WinNetCoreApp\WinNetCoreApp\bin\Debug'
-      # Use always() to always run this step to publish test results when there are test failures
-      #if: ${{ always() }}
+        # Use always() to always run this step to publish test results when there are test failures
+        #if: ${{ always() }}
       
     - name: Upload assemblyinfo results
       uses: actions/upload-artifact@v2
