@@ -75,7 +75,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: assemblyinfo
-        path: '\WinNetCoreApp\WinNetCoreApp\obj'
+        path: '.\WinNetCoreApp\WinNetCoreApp\obj'
       # Use always() to always run this step to publish test results when there are test failures
       if: ${{ always() }}
       
