@@ -49,7 +49,7 @@ jobs:
       env:
            version-number: ${{ env.majorVersion }}.${{ env.minorVersion }}.${{ github.run_number }}
       with:
-        regex: '[0-9]+(\.([0-9]+|\*)){1,2}'
+        regex: '[0-9]+(\.([0-9]+|\*)){1,3}'
         replacement: '${{ env.version-number}}'
         flags: "gi"                  # Optional, defaults to "g"
         include: 'WinNetCoreApp.csproj'    # Optional, defaults to ".*"
