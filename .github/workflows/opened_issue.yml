@@ -51,4 +51,4 @@ jobs:
       # uses: peter-evans/close-issue@a700eac5bf2a1c7a8cb6da0c13f93ed96fd53dbe
       uses: peter-evans/close-issue@v1.0.3
       with:
-        comment: 'Thanks for your issue, but we dont have enough time. Please try it again later.'
+        comment: '👋 Thanks for reporting! ... but unfortunately we do not have time for you at the moment. Don''t give up and just try again later.'
