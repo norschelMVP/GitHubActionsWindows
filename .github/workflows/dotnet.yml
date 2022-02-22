@@ -10,7 +10,8 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
+  workflow_dispatch:
+   
 jobs:
   deploy:
     runs-on: windows-latest
@@ -18,6 +19,7 @@ jobs:
     environment: Prod
     steps:
       - run: echo "deployment"
+      - run: echo "my secret ${{ sec.supersecret }}"
   
   test:
     strategy:
