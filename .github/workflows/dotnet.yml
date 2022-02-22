@@ -19,7 +19,7 @@ jobs:
     environment: Prod
     steps:
       - run: echo "deployment"
-      - run: echo "my secret ${{ sec.supersecret }}"
+      - run: echo "my secret ${{ secrets.supersecret }}"
   
   test:
     strategy:
