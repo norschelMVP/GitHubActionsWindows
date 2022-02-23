@@ -1,5 +1,4 @@
 name: .NETCoreWinAppDemo
-#test
 
 env:
  majorVersion: 2
