@@ -40,6 +40,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Hello world action step
+      id: hello
+      uses: norschelMVP/demotest-hello-world-javascript-action@v1.2
+      with:
+        who-to-greet: 'Basta 2022 Spring Publikum'
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
