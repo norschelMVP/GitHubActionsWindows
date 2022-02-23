@@ -1,4 +1,4 @@
-name: .NET 
+name: .NET Core WinApp Demo
 #test
 
 env:
