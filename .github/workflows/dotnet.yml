@@ -42,7 +42,7 @@ jobs:
     
     - name: Hello world action step
       id: hello
-      uses: norschelMVP/demotest-hello-world-javascript-action@v.1.6
+      uses: norschelMVP/demotest-hello-world-javascript-action@v1.6
       with:
         who-to-greet: 'Basta 2022 Spring Publikum'
         
