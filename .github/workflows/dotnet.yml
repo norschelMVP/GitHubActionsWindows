@@ -1,0 +1,29 @@
+name: Testlauf-CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    env:
+      SolutionPath: .\WinNetCoreApp\
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.SolutionPath }}
+    - name: Build
+      run: dotnet build ${{ env.SolutionPath }} --no-restore
+    - name: Test
+      run: dotnet test ${{ env.SolutionPath }} --no-build --verbosity normal
