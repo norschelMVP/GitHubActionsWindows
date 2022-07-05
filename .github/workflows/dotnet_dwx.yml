@@ -1,0 +1,28 @@
+name: DWXNet
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:  
+
+jobs:
+  build:
+    env:
+      solutionpath: .\WinNetCoreApp\
+      
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.solutionpath }}
+    - name: Build
+      run: dotnet build ${{ env.solutionpath }} --no-restore
+    - name: Test
+      run: dotnet test ${{ env.solutionpath }} --no-build --verbosity normal
