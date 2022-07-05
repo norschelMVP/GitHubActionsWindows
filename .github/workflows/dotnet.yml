@@ -28,7 +28,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     needs: [build]
     env:
-      myVariable: "Basta 2021"
+      myVariable: "DWX 2022"
     steps:
       - run: echo "hello world ${{ env.myVariable }}"
   
@@ -45,7 +45,7 @@ jobs:
       id: hello
       uses: norschelMVP/demotest-hello-world-javascript-action@v1.11
       with:
-        who-to-greet: 'Basta 2022 Spring Publikum'
+        who-to-greet: 'DWX 2022 Spring Publikum'
         
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
