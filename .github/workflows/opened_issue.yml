@@ -21,15 +21,10 @@ jobs:
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.name }}"
       
-    - name: Random quote on issue by current pull request
-      uses: alexrogalskiy/github-action-random-quote@master
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
     - name: Chuck Norris quote
       # You may pin to the exact commit or the version.
       # uses: glav/chuck-norris-quote@ab2f5ed65aa44b84d8a63ac593e838f3d7472836
-      uses: glav/chuck-norris-quote@v1.0
+      uses: glav/chuck-norris-quote@v0.9.2
       id: textchuck
       with:
         quote-format: html/text
