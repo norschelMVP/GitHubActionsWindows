@@ -21,19 +21,17 @@ jobs:
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.name }}"
       
-    - name: Chuck Norris quote
-      # You may pin to the exact commit or the version.
-      # uses: glav/chuck-norris-quote@ab2f5ed65aa44b84d8a63ac593e838f3d7472836
-      uses: glav/chuck-norris-quote@v0.9.2
-      id: textchuck
+    - uses: vadimdez/weather-action@11
+      id: wetter
       with:
-        quote-format: html/text
+        lat: "49.460983"
+        long: "11.061859"
 
     - name: Add reactions
       uses: peter-evans/create-or-update-comment@v1
       with:
           reactions: heart, hooray, laugh
-          body: ${{ steps.textchuck.outputs.quote }}
+          body: "Das Wetter in ${{ steps.wetter.outputs.place }} ${{ steps.wetter.outputs.temperature }} ist auch schön"
           issue-number: ${{ github.event.issue.number }}
           
     - name: AutoLabeller
