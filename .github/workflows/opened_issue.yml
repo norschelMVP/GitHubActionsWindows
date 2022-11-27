@@ -34,6 +34,21 @@ jobs:
           body: "Bei ${{ steps.wetter.outputs.temperature }} Grad in ${{ steps.wetter.outputs.place }} würde ich auch ungern arbeiten."
           issue-number: ${{ github.event.issue.number }}
           
+    - name: Chuck Norris quote
+      # You may pin to the exact commit or the version.
+      # uses: glav/chuck-norris-quote@ab2f5ed65aa44b84d8a63ac593e838f3d7472836
+      uses: glav/chuck-norris-quote@v1.0
+      id: textchuck
+      with:
+        quote-format: html/text
+
+    - name: Add reactions
+      uses: peter-evans/create-or-update-comment@v1
+      with:
+          reactions: heart, hooray, laugh
+          body: ${{ steps.textchuck.outputs.quote }}
+          issue-number: ${{ github.event.issue.number }}
+          
     - name: AutoLabeller
       uses: actions/github-script@v4
       with:
