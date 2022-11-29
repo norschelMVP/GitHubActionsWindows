@@ -31,7 +31,7 @@ jobs:
     - name: Build
       run: dotnet build ${{ env.solutionpath }} --no-restore
     - name: Test
-      run: dotnet test ${{ env.solutionpath }}  --no-build --verbosity normal
+      run: dotnet test ${{ env.solutionpath }} --logger trx --no-build --verbosity normal
     - name: Test Reporter
       uses: dorny/test-reporter@v1.6.0
       with:
