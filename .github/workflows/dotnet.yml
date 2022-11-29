@@ -24,9 +24,9 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: dotnet restore ${solutionPath} 
+    - name: Restore dependencies${solutionPath}
+      run: dotnet restore ${{ env.solutionpath }}
     - name: Build
-      run: dotnet build ${solutionPath} --no-restore
+      run: dotnet build ${{ env.solutionpath }} --no-restore
     - name: Test
-      run: dotnet test ${solutionPath}  --no-build --verbosity normal
+      run: dotnet test ${{ env.solutionpath }}  --no-build --verbosity normal
