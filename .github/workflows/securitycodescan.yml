@@ -37,6 +37,14 @@ jobs:
 
       - name: Build
         run: dotnet build ${{ env.solutionpath }} --no-restore
+        
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.5.1
+        with:
+          # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
+          node-version: 12.x
+          # File containing the version Spec of the version to use.  Examples: .nvmrc, .node-version, .tool-versions.
+ 
 
       - name: Convert sarif for uploading to GitHub
         uses: security-code-scan/security-code-scan-results-action@main
