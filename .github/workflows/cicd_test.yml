@@ -41,4 +41,4 @@ jobs:
     environment: prod
     
     steps:
-     - run: echo "this is a deployment"
+     - run: echo "this is a $env:GITHUB_JOB"
