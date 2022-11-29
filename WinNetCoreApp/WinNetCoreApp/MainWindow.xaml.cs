@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +24,9 @@ namespace WinNetCoreApp
         public MainWindow()
         {
             InitializeComponent();
+
+            MD5 md5 = new MD5CryptoServiceProvider();
+            Console.WriteLine(md5.ComputeHash(Encoding.ASCII.GetBytes("test")));
         }
     }
 }
