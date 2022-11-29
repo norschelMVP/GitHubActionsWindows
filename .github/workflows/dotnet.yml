@@ -19,6 +19,8 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - run: echo "my secret ${{ secrets.supersecret }}"
+    - run: echo "gh event triggered this workflow -> ${{ github.event_name }}"
     - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
