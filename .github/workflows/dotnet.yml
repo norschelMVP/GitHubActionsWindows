@@ -30,3 +30,12 @@ jobs:
       run: dotnet build ${{ env.solutionpath }} --no-restore
     - name: Test
       run: dotnet test ${{ env.solutionpath }}  --no-build --verbosity normal
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.1
+      with:
+        # Artifact name
+        name: WinApp
+        # A file, directory or wildcard pattern that describes what to upload
+        path: .\WinNetCoreApp\bin\Debug
+        # The desired behavior if no files are found using the provided path.
+        retention-days: 90
