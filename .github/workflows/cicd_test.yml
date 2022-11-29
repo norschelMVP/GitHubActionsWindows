@@ -34,11 +34,11 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          
   deploy:
     runs-on: windows-latest
     needs: [build]
-    environment: Prod
+    environment: prod
     
     steps:
-      - run: echo "test"
      - run: echo "this is a deployment"
