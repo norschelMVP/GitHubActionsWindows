@@ -19,14 +19,14 @@ on:
   workflow_dispatch:
     
 env:
- solutionPath: .\WinNetCoreApp
+ solutionPath: .\WinNetCoreApp\
 
 jobs:
   SCS:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: nuget/setup-nuget@04b0c2b8d1b97922f67eca497d7cf0bf17b8ffe1
+      - uses: nuget/setup-nuget@v1.0.5
       - uses: microsoft/setup-msbuild@v1.0.2
 
       - name: Set up projects for analysis
@@ -37,15 +37,7 @@ jobs:
 
       - name: Build
         run: dotnet build ${{ env.solutionpath }} --no-restore
-        
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3.5.1
-        with:
-          # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
-          node-version: 15.x
-          # File containing the version Spec of the version to use.  Examples: .nvmrc, .node-version, .tool-versions.
- 
-
+      
       - name: Convert sarif for uploading to GitHub
         uses: security-code-scan/security-code-scan-results-action@main
 
