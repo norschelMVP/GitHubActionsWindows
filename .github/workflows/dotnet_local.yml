@@ -18,7 +18,7 @@ jobs:
 
     steps:
     - run: echo runs only for pull requests
-      if: ${{ github.event_name == 'pull_request' }} 
+      if: github.event_name == 'pull_request'
     - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
