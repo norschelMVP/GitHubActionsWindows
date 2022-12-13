@@ -37,9 +37,13 @@ jobs:
       solutionpath: .\WinNetCoreApp\
 
     runs-on: windows-latest
+    # runs-on: [self-hosted, WPF]
 
     steps:
     - uses: actions/checkout@v2
+    
+    - run: echo runs only for pull requests
+      if: github.event_name == 'pull_request'
     
     - name: Hello world action step
       id: hello
