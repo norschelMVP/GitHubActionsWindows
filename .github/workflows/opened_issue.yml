@@ -24,8 +24,8 @@ jobs:
     - uses: vadimdez/weather-action@11
       id: wetter
       with:
-        lat: "50.935173"
-        long: "6.953101"
+        lat: "50.110924"
+        long: "8.682127"
 
     - name: Add reactions
       uses: peter-evans/create-or-update-comment@v1
