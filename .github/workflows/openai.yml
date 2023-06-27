@@ -28,12 +28,8 @@ jobs:
     # Examples on how to use the output
     - name: Show response from OpenAI CreateCompletion
       run: |
-        # Using the character `'` to prevent all characters enclosed within
-        # them from being treated as special characters (e.g. $ or `)
         echo '${{ steps.openai.outputs.response }}'
-
-        # Show texts -> Array of strings
-        echo '${{ fromJson(steps.openai.outputs.response).texts }}'
+        echo '${{ fromJson(steps.openai.outputs.response).text }}'
 
     - name: OpenAI CreateCompletion
       uses: onmax/oai-createcompletion-githubaction@v1.0
