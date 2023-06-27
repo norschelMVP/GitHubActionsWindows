@@ -32,7 +32,7 @@ jobs:
         # echo '${{ steps.openai.outputs.response }}'
         variable=$(echo '${{ steps.openai.outputs.response }}' | jq -r '.texts[] | sub("\\n"; "") | sub("\""; "")| sub("\""; "")')
         echo $variable
-        run: echo "JobTitle=$variable" >> "$GITHUB_OUTPUT"
+        echo "JobTitle=$variable" >> "$GITHUB_OUTPUT"
     - name: OpenAI CreateCompletion
       uses: onmax/oai-createcompletion-githubaction@v1.0
       id: openai2
