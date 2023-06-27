@@ -1,0 +1,33 @@
+name: OpenAI_Test
+
+on:
+  workflow_dispatch:
+    
+jobs:
+  stale:
+
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+    - name: OpenAI CreateCompletion
+      uses: onmax/oai-createcompletion-githubaction@v1.0
+      id: openai
+      with:
+        model: davinci
+        prompt: "Ich bin Chuck Norris und arbeite in der Agentur für Arbeit als Jobberater. Welchen Job würdest du Mike empfehlen. Er macht etwas mit IT und Cloud. Der Jobtitel soll im Chuck Norris Stil sein.Bitte gebe nur den Jobtitel aus."
+        max_tokens: 50
+        temperature: 1 # the temperature for the model. Optional
+        openai_api_key: ${{ secrets.OPENAI_API_KEY }} # your openai api key
+
+    # Examples on how to use the output
+    - name: Show response from OpenAI CreateCompletion
+      run: |
+        # Using the character `'` to prevent all characters enclosed within
+        # them from being treated as special characters (e.g. $ or `)
+        echo '${{ steps.openai.outputs.response }}'
+
+        # Show texts -> Array of strings
+        echo '${{ fromJson(steps.openai.outputs.response).texts }}'
