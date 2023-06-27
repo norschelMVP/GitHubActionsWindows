@@ -30,7 +30,7 @@ jobs:
       id: jobtitle
       run: |
         # echo '${{ steps.openai.outputs.response }}'
-        echo '${{ steps.openai.outputs.response }}' | jq -r '.texts[] | sub("\\n"; "") | sub("\""; "")'
+        echo '${{ steps.openai.outputs.response }}' | jq -r '.texts[] | sub("\\n"; "") | sub("\""; "")' | { read message; echo "$message"; }
     - name: OpenAI CreateCompletion
       uses: onmax/oai-createcompletion-githubaction@v1.0
       id: openai2
