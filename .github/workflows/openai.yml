@@ -29,7 +29,7 @@ jobs:
     - name: Show response from OpenAI CreateCompletion
       run: |
         # echo '${{ steps.openai.outputs.response }}'
-        echo "JobTitle='${{ steps.openai.outputs.response }}' | jq -r '.texts[] | sub("\\n"; "") | sub("\""; "")' >> "$GITHUB_OUTPUT"
+        JobTitle=echo '${{ steps.openai.outputs.response }}' | jq -r '.texts[] | sub("\\n"; "") | sub("\""; "")' >> "$GITHUB_OUTPUT"
 
     - name: OpenAI CreateCompletion
       uses: onmax/oai-createcompletion-githubaction@v1.0
