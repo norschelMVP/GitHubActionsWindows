@@ -34,3 +34,24 @@ jobs:
 
         # Show texts -> Array of strings
         echo '${{ fromJson(steps.openai.outputs.response).texts }}'
+
+    - name: OpenAI CreateCompletion
+      uses: onmax/oai-createcompletion-githubaction@v1.0
+      id: openai2
+      with:
+        model: text-davinci-003
+        prompt: "Ich brauche eine gute Aufgabenbeschreibung für Mike mit dem Jobtitel ${{ fromJson(steps.openai.outputs.response).texts }} vor."
+        max_tokens: 50
+        temperature: 1 # the temperature for the model. Optional
+        openai_api_key: ${{ secrets.OPENAI_API_KEY }} # your openai api key
+        # Examples on how to use the output
+        
+    - name: Show response from OpenAI CreateCompletion - 2
+      run: |
+        # Using the character `'` to prevent all characters enclosed within
+        # them from being treated as special characters (e.g. $ or `)
+        echo '${{ steps.openai2.outputs.response }}'
+
+        # Show texts -> Array of strings
+        echo '${{ fromJson(steps.openai2.outputs.response).texts }}'
+        
