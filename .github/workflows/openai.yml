@@ -29,7 +29,7 @@ jobs:
     - name: Show response from OpenAI CreateCompletion
       run: |
         echo '${{ steps.openai.outputs.response }}'
-        echo '${{ steps.openai.outputs.response }}' | jq '.texts[] | sub("\\n"; "")'
+        echo '${{ steps.openai.outputs.response }}' | jq -r '.texts[] | sub("\\n"; "")'
         echo '${{ fromJSON(steps.openai.outputs.response) }}'
 
     - name: OpenAI CreateCompletion
