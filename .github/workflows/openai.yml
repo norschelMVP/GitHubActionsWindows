@@ -40,7 +40,7 @@ jobs:
       with:
         model: text-davinci-003
         prompt: "Ich brauche eine gute Aufgabenbeschreibung für Mike mit dem Jobtitel ${{ steps.jobtitle.outputs.JobTitle }} vor."
-        max_tokens: 400
+        max_tokens: 800
         temperature: 1 # the temperature for the model. Optional
         openai_api_key: ${{ secrets.OPENAI_API_KEY }} # your openai api key
         # Examples on how to use the output
@@ -50,6 +50,6 @@ jobs:
         variable=$(echo '${{ steps.openai2.outputs.response }}' | jq -r '.texts[] | sub("\\n"; "") | sub("\""; "")| sub("\""; "")')
         echo $variable
         variable=$(echo $variable | tr '\n' ' ')
-        echo "JobTitle=$variable" >> "$GITHUB_OUTPUT"
+        echo "JobDescription=$variable" >> "$GITHUB_OUTPUT"
 
         
