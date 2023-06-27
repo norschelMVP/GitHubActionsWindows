@@ -40,7 +40,7 @@ jobs:
       with:
         model: text-davinci-003
         prompt: "Ich brauche eine gute Aufgabenbeschreibung für Mike mit dem Jobtitel ${{ steps.jobtitle.outputs.JobTitle }} vor."
-        max_tokens: 200
+        max_tokens: 400
         temperature: 1 # the temperature for the model. Optional
         openai_api_key: ${{ secrets.OPENAI_API_KEY }} # your openai api key
         # Examples on how to use the output
