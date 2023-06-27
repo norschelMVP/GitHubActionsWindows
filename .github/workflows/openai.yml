@@ -21,16 +21,15 @@ jobs:
       with:
         model: text-davinci-003
         prompt: "Ich bin Chuck Norris und arbeite in der Agentur für Arbeit als Jobberater. Welchen Job würdest du Mike empfehlen. Er macht etwas mit IT und Cloud. Der Jobtitel soll im Chuck Norris Stil sein.Bitte gebe nur den Jobtitel aus."
-        max_tokens: 50
+        max_tokens: 100
         temperature: 1 # the temperature for the model. Optional
         openai_api_key: ${{ secrets.OPENAI_API_KEY }} # your openai api key
 
     # Examples on how to use the output
     - name: Show response from OpenAI CreateCompletion
       run: |
-        echo '${{ steps.openai.outputs.response }}'
+        # echo '${{ steps.openai.outputs.response }}'
         echo '${{ steps.openai.outputs.response }}' | jq -r '.texts[] | sub("\\n"; "") | sub("\""; "")'
-        echo '${{ fromJSON(steps.openai.outputs.response) }}'
 
     - name: OpenAI CreateCompletion
       uses: onmax/oai-createcompletion-githubaction@v1.0
