@@ -19,7 +19,7 @@ jobs:
       uses: onmax/oai-createcompletion-githubaction@v1.0
       id: openai
       with:
-        model: davincitext
+        model: text-davinci-003
         prompt: "Ich bin Chuck Norris und arbeite in der Agentur für Arbeit als Jobberater. Welchen Job würdest du Mike empfehlen. Er macht etwas mit IT und Cloud. Der Jobtitel soll im Chuck Norris Stil sein.Bitte gebe nur den Jobtitel aus."
         max_tokens: 50
         temperature: 1 # the temperature for the model. Optional
