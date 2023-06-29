@@ -29,9 +29,18 @@ jobs:
 
     - name: Add reactions
       uses: peter-evans/create-or-update-comment@v1
+      if: ${{ steps.wetter.outputs.temperature }} > 20
       with:
           reactions: heart, hooray, laugh
           body: "Bei ${{ steps.wetter.outputs.temperature }} Grad in ${{ steps.wetter.outputs.place }} würde ich auch ungern arbeiten."
+          issue-number: ${{ github.event.issue.number }}
+    
+    - name: Add reactions
+      uses: peter-evans/create-or-update-comment@v1
+      if: ${{ steps.wetter.outputs.temperature }} <= 20
+      with:
+          reactions: heart, hooray, laugh
+          body: "Bei ${{ steps.wetter.outputs.temperature }} Grad in ${{ steps.wetter.outputs.place }} würde ich auch gern arbeiten."
           issue-number: ${{ github.event.issue.number }}
           
     - name: AutoLabeller
