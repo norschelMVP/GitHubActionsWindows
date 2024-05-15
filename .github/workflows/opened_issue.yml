@@ -21,6 +21,13 @@ jobs:
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.name }}"
       
+    - name: chuck-norris-quote-action-html
+      id: htmlchuck
+      uses: glav/chuck-norris-quote@v1.0
+      with:
+        quote-format: 'html'
+        escape-quote: 'true'
+          
     - uses: vadimdez/weather-action@11
       id: wetter
       with:
