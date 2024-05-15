@@ -21,35 +21,31 @@ jobs:
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.name }}"
       
-    - name: chuck-norris-quote-action-html
-      id: htmlchuck
-      uses: glav/chuck-norris-quote@v1.0
+    - name: OpenAI - Ask for a Job Title
+      uses: onmax/oai-createcompletion-githubaction@v1.0
+      id: openai
       with:
-        quote-format: 'html'
-        escape-quote: 'true'
-          
-    - uses: vadimdez/weather-action@11
-      id: wetter
-      with:
-        lat: "49.4521"
-        long: "11.0767"
+        model: gpt-3.5-turbo-instruct
+        prompt: "Chuck Norris muss zwangsweise ein IT Ticket bearbeiten, mag dieses aber heute nicht tun. Es wird ein epischer chuck norris spruch zum verschieben des problems benötigt."
+        max_tokens: 2000
+        temperature: 1 # the temperature for the model. Optional
+        openai_api_key: ${{ secrets.OPENAI_API_KEY }} # your openai api key
+        
+    - name: Show response from OpenAI - Job Description
+      id: spruch
+      run: |
+        variable=$(echo '${{ steps.openai.outputs.response }}' | jq -r '.texts[] | sub("\\n"; "") | sub("\""; "")| sub("\""; "")')
+        echo $variable
+        variable=$(echo $variable | tr '\n' ' ')
+        echo "Spruch=$variable" >> "$GITHUB_OUTPUT"
 
     - name: Add reactions
       uses: peter-evans/create-or-update-comment@v1
-      if: ${{ steps.wetter.outputs.temperature  > 20}}
       with:
           reactions: heart, hooray, laugh
-          body: "Bei ${{ steps.wetter.outputs.temperature }} Grad in ${{ steps.wetter.outputs.place }} würde ich auch ungern arbeiten."
+          body: "${{ steps.spruch.outputs.Spruch }}"
           issue-number: ${{ github.event.issue.number }}
-    
-    - name: Add reactions
-      uses: peter-evans/create-or-update-comment@v1
-      if: ${{ steps.wetter.outputs.temperature <= 20}} 
-      with:
-          reactions: heart, hooray, laugh
-          body: "Bei ${{ steps.wetter.outputs.temperature }} Grad in ${{ steps.wetter.outputs.place }} würde ich auch gern arbeiten."
-          issue-number: ${{ github.event.issue.number }}
-          
+              
     - name: AutoLabeller
       uses: actions/github-script@v4
       with:
