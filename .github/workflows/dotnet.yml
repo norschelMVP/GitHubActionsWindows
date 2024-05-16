@@ -11,7 +11,11 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:
-   
+
+permissions:
+ issues: write
+ contents: read
+
 jobs:
   deploy:
     runs-on: windows-latest
