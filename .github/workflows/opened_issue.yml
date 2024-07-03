@@ -23,7 +23,7 @@ jobs:
       id: openai
       with:
         model: gpt-3.5-turbo-instruct
-        prompt: "Chuck Norris muss zwangsweise ein IT Support Ticket mit dem Titel ${{ github.event.issue.title }} bearbeiten, er kann das unmögliche möglich machen, mag dieses aber heute nicht tun. Es wird ein epischer chuck norris spruch zum aufschieben des problems benötigt. Überzeuge den Ticketschreiber doch besser das problem selber zu lösen."
+        prompt: "Chuck Norris muss zwangsweise ein IT Support Ticket mit dem Titel ${{ github.event.issue.title }} bearbeiten, er kann das unmögliche möglich machen, mag dieses aber heute nicht tun. Es wird ein epischer chuck norris spruch zum aufschieben des problems benötigt."
         max_tokens: 2000
         temperature: 1 # the temperature for the model. Optional
         openai_api_key: ${{ secrets.OPENAI_API_KEY }} # your openai api key
