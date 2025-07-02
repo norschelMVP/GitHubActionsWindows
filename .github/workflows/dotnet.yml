@@ -33,7 +33,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     needs: [build]
     env:
-      myVariable: "Conference 2022"
+      myVariable: "Conference 2025"
     steps:
       - run: echo "hello world ${{ env.myVariable }}"
   
